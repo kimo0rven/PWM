@@ -1,11 +1,16 @@
 list convertTag(string rawTags)
 {
+info rawTags;
 returnList = List();
 tagList = List();
 if(rawTags.contains(",") == False)
 {
 	tagList.add(rawTags);
 	//tagList.add("zxywqpeo");
+}
+else if(rawTags == "None")
+{
+	returnList.addAll({});
 }
 else
 {
