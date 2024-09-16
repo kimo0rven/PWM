@@ -1,0 +1,17 @@
+int convertBillingType(string billingType)
+{
+billingTypeValue = 0;
+if(billingType == "None")
+{
+	billingTypeValue = 0;
+}
+else if(billingType == "Billable")
+{
+	billingTypeValue = 1;
+}
+else if(billingType == "Non Billable")
+{
+	billingTypeValue = 2;
+}
+return billingTypeValue;
+}
