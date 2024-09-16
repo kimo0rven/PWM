@@ -1,0 +1,46 @@
+list fetchMember(string taskOwner, string list_id)
+{
+returnList = List();
+if(taskOwner == "Unassigned User")
+{
+	return returnList;
+}
+else
+{
+	headerMap = Map();
+	headerMap.put("Authorization","pk_37780596_ESMZRKH240PD14KCQHA6VT33LCP0WJ5L");
+	headerMap.put("Content-Type","application/json");
+	//
+	memberList = List();
+	if(taskOwner.contains(","))
+	{
+		tempList = taskOwner.toList();
+		memberList.addAll(tempList);
+		info memberList;
+	}
+	else
+	{
+		memberList.add(taskOwner);
+	}
+	//
+	response = invokeurl
+	[
+		url :"https://api.clickup.com/api/v2/list/" + list_id + "/member"
+		type :GET
+		headers:headerMap
+	];
+	//
+	for each  member in memberList
+	{
+		for each  record in response.get("members")
+		{
+			if(record.get("username") == member)
+			{
+				returnList.add(record.get("id"));
+			}
+		}
+	}
+	info returnList;
+}
+return returnList;
+}
