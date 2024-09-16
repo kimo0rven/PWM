@@ -1,0 +1,60 @@
+void Create_Task(string listId, string taskName, string taskStartDate, string taskDueDate, int taskPriority, string taskStatus, string taskDescription, int billingType, list taskOwner, list taskTag)
+{
+info taskTag;
+taskDescription = taskDescription.remove("<div>").remove("</div>");
+if(taskDescription.containsIgnoreCase("<br />"))
+{
+	taskDescription.remove("<br />");
+}
+if(taskStartDate == "" || taskStartDate == "None")
+{
+	taskStartDate = null;
+}
+else
+{
+	taskStartDate = taskStartDate.unixEpoch();
+}
+//
+if(taskDueDate == "" || taskDueDate == "None")
+{
+	taskDueDate = null;
+}
+else
+{
+	taskDueDate = taskDueDate.unixEpoch();
+}
+//info taskStartDate + "-" + taskDueDate;
+//
+headerMap = Map();
+headerMap.put("Authorization","pk_37780596_ESMZRKH240PD14KCQHA6VT33LCP0WJ5L");
+headerMap.put("Content-Type","application/json");
+//
+//
+//info billingType;
+billingTypeField = Map();
+billingTypeField.put("id","5524f24b-6f3f-4051-ad2f-1af23c53e614");
+billingTypeField.put("value",billingType);
+customFields = List();
+customFields.add(billingTypeField);
+//info customFields;
+//
+payload = Map();
+payload.put("name",taskName);
+payload.put("start_date",taskStartDate);
+payload.put("due_date",taskDueDate);
+payload.put("priority",taskPriority);
+payload.put("status",taskStatus);
+payload.put("description",taskDescription);
+payload.put("custom_fields",customFields);
+payload.put("assignees",taskOwner);
+payload.put("tags",taskTag);
+//
+response = invokeurl
+[
+	url :"https://api.clickup.com/api/v2/list/" + listId + "/task"
+	type :POST
+	parameters:payload.toString()
+	headers:headerMap
+];
+info response;
+}
