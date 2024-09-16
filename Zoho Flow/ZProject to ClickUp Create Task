@@ -1,0 +1,23 @@
+string FetchFolder(string folderName)
+{
+folderId = "";
+space_id = 90161882382;
+headersMap = Map();
+headersMap.put("Authorization","pk_37780596_ESMZRKH240PD14KCQHA6VT33LCP0WJ5L");
+response = invokeurl
+[
+	url :"https://api.clickup.com/api/v2/space/" + space_id + "/folder"
+	type :GET
+	headers:headersMap
+];
+folderList = response.get("folders");
+for each  folder in folderList
+{
+	if(folder.get("name") == folderName)
+	{
+		folderId = folder.get("id");
+	}
+}
+info folderId;
+return folderId;
+}
