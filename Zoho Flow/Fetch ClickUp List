@@ -1,0 +1,21 @@
+string FetchList(string listName, string folderId)
+{
+listId = "";
+headerMap = Map();
+headerMap.put("Authorization","pk_37780596_ESMZRKH240PD14KCQHA6VT33LCP0WJ5L");
+response = invokeurl
+[
+	url :"https://api.clickup.com/api/v2/folder/" + folderId + "/list"
+	type :GET
+	headers:headerMap
+];
+Listslist = response.get("lists");
+for each  list1 in Listslist
+{
+	if(list1.get("name") == listName)
+	{
+		listId = list1.get("id");
+	}
+}
+return listId;
+}
