@@ -1,0 +1,21 @@
+int convertPriority(string rawPriority)
+{
+priority = 0;
+if(rawPriority == "High")
+{
+	priority = priority + 2;
+}
+if(rawPriority == "Medium")
+{
+	priority = priority + 3;
+}
+if(rawPriority == "Low")
+{
+	priority = priority + 4;
+}
+if(rawPriority == "None")
+{
+	priority = null;
+}
+return priority;
+}
