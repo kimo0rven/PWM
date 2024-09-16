@@ -1,0 +1,12 @@
+string updateFolderIdField(string folderId, int portalId, int projectId)
+{
+response = invokeurl
+[
+	url :"https://projectsapi.zoho.com/restapi/portal/" + portalId + "/projects/" + projectId + "/"
+	type :POST
+	parameters:{"UDF_CHAR1":folderId}
+	connection:"zoho_projects_connection"
+];
+info response;
+return "";
+}
