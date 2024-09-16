@@ -1,0 +1,37 @@
+list convertTag(string rawTags)
+{
+returnList = List();
+tagList = List();
+if(rawTags.contains(",") == False)
+{
+	tagList.add(rawTags);
+	//tagList.add("zxywqpeo");
+}
+else
+{
+	tempList = rawTags.toList();
+	tagList.addAll(tempList);
+}
+//
+first_portal_id = zoho.projects.getPortals("zoho_projects_connection").get("portals").get(0).get("id");
+first_project_id = zoho.projects.getProjectDetails(first_portal_id,"active","zoho_projects_connection").get(0).get("id");
+first_task = zoho.projects.getRecords(first_portal_id,first_project_id,"tasks",0,0,"zoho_projects_connection").get("tasks").get(0);
+taskTags = first_task.get("tags");
+//
+info tagList;
+for each  tag in taskTags
+{
+	for each  x in tagList
+	{
+		if(tag.get("id") == x)
+		{
+			info tag.get("name");
+			tagFound = tag.get("name");
+			returnList.add(tagFound);
+		}
+	}
+}
+//
+info returnList;
+return returnList;
+}
