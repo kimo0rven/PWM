@@ -1,0 +1,13 @@
+string updateZProjectId(int zproject_task_id, string clickupId, int portalId, int projectId)
+{
+
+response1 = invokeurl
+[
+	url :"https://projectsapi.zoho.com/restapi/portal/" + portalId + "/projects/" + projectId + "/tasks/" + zproject_task_id + "/"
+	type :POST
+	parameters:{"custom_fields":{"UDF_CHAR1":clickupId}}
+	connection:"zoho_projects_connection"
+];
+info response1;
+return "";
+}
