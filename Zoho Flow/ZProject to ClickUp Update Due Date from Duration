@@ -1,0 +1,23 @@
+string UpdateClickUpDueDateFromDuration(string id, string start_date, string due_date, int duration)
+{
+durationUnix = duration * 86400;
+start_date = start_date.unixEpoch();
+due_date = due_date.unixEpoch();
+new_due_date = due_date + durationUnix;
+//
+headerMap = Map();
+headerMap.put("Authorization","pk_37780596_CLSV4SPEHCNHZF2XJU22WUOIBXQKDODN");
+headerMap.put("Content-Type","application/json");
+payload = Map();
+payload.put("due_date",new_due_date);
+payload.put("start_date",start_date);
+response1 = invokeurl
+[
+	url :"https://api.clickup.com/api/v2/task/" + id
+	type :PUT
+	parameters:payload.toString()
+	headers:headerMap
+];
+info response1;
+return response1;
+}
