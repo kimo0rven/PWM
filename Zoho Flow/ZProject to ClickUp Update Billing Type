@@ -1,0 +1,24 @@
+map UpdateClickUpBillingType(string id, int billing_type)
+{
+headerMap = Map();
+headerMap.put("Authorization","pk_37780596_CLSV4SPEHCNHZF2XJU22WUOIBXQKDODN");
+headerMap.put("Content-Type","application/json");
+//
+billingTypeField = Map();
+billingTypeField.put("id","5524f24b-6f3f-4051-ad2f-1af23c53e614");
+billingTypeField.put("value",billing_type);
+customFields = List();
+customFields.add(billingTypeField);
+//
+payload = Map();
+payload.put("custom_fields",customFields);
+response1 = invokeurl
+[
+	url :"https://api.clickup.com/api/v2/task/" + id
+	type :PUT
+	parameters:payload.toString()
+	headers:headerMap
+];
+info response1;
+return response1;
+}
