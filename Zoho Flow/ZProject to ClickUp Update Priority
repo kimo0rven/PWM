@@ -1,7 +1,7 @@
 map UpdateClickUpPriority(string priority, string id)
 {
 headerMap = Map();
-headerMap.put("Authorization","pk_37780596_CLSV4SPEHCNHZF2XJU22WUOIBXQKDODN");
+headerMap.put("Authorization","");
 headerMap.put("Content-Type","application/json");
 payload = Map();
 payload.put("priority",priority);
