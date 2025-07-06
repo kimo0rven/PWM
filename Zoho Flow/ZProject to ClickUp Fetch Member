@@ -8,7 +8,7 @@ if(taskOwner == "Unassigned User")
 else
 {
 	headerMap = Map();
-	headerMap.put("Authorization","pk_37780596_ESMZRKH240PD14KCQHA6VT33LCP0WJ5L");
+	headerMap.put("Authorization","");
 	headerMap.put("Content-Type","application/json");
 	//
 	memberList = List();
